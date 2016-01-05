@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="XMLHttpRequest.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    ajax({
+        url: 'data/data.json',
+        type: 'GET',
+        data: {
+            userName: 'Jackey'
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+</script>
+</html>
