@@ -155,7 +155,7 @@
     var test = function () {
         var defer = new Deferred();
         setTimeout(function () {
-            defer.resolve(1);
+            defer.resolve(1);//trigger
             //defer = {
             //	promise: promise
             //}
