@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dragBox {
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="dragBox"></div>
+</body>
+<script>
+    var element = document.getElementById('dragBox');
+    var mouseOn = false;
+
+    var startX = 0,//鼠标落点相对于元素的X距离
+            startY = 0,//鼠标落点相对于元素的y距离
+            x = 0,//元素的left坐标
+            y = 0;//元素的top坐标
+
+    element.addEventListener('mousedown', function (event) {
+        if (mouseOn) {
+            startX = event.screenX - x;
+            startY = event.screenY - y;
+            element.style.cursor = 'move';
+            document.addEventListener('mousemove', mousemove);
+            document.addEventListener('mouseup', mouseup);
+        }
+    });
+
+    element.addEventListener('mouseenter', function () {
+        mouseOn = true;
+    });
+
+    element.addEventListener('mouseout', function () {
+        mouseOn = false;
+    });
+
+    function mousemove(event) {
+        x = event.screenX - startX;
+        y = event.screenY - startY;
+        element.style.top = y + 'px';
+        element.style.left = x + 'px';
+    }
+
+    function mouseup(event) {
+        element.style.cursor = 'default';
+        document.removeEventListener('mousemove', mousemove);
+        document.removeEventListener('mouseup', mouseup);
+    }
+
+
+</script>
+</html>
