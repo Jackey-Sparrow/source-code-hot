@@ -4,3 +4,7 @@
 1. Ajax
 2. Promise
 3. Router
+4. Http
+5. Jsonp
+6. Bite
+7. Drag
