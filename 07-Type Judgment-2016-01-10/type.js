@@ -45,7 +45,7 @@ var type = (function () {
     }
 
     function isString(str) {
-        return class2type[toString.call(str)] === 'string';
+        return type(str) === 'string';
     }
 
     return {
