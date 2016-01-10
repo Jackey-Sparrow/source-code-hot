@@ -36,7 +36,7 @@ var type = (function () {
     }
 
     function isNumber(obj) {
-        return class2type[toString.call(obj)] === 'number';
+        return type(obj) === 'number';
     }
 
     function isPlainObject(obj) {
