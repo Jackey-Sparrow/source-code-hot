@@ -9,3 +9,4 @@
 6. Bite
 7. Drag
 8. Type Judgment
+9. Delegate, not done
