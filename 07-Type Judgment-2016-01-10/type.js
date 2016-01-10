@@ -11,6 +11,8 @@ var type = (function () {
         class2type['[object ' + name + ']'] = name.toLowerCase();
     });
 
+    //Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, '$1').toLowerCase();
+
     function type(obj) {
         return class2type[toString.call(obj)];
     }
