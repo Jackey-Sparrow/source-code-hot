@@ -8,3 +8,4 @@
 5. Jsonp
 6. Bite
 7. Drag
+8. Type Judgment
