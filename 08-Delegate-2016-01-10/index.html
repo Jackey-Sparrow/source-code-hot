@@ -11,12 +11,17 @@
 <script>
     var b = document.getElementById('b');
     b.addEventListener('click', function (e) {
-        //e.stopImmediatePropagation();
-        e.stopPropagation();
         console.log('1');
     });
+
     b.addEventListener('click', function (e) {
+        //e.stopImmediatePropagation();//会阻塞3的打印
+        e.stopPropagation();
         console.log('2');
+    });
+
+    b.addEventListener('click', function (e) {
+        console.log('3');
     });
 </script>
 </html>
