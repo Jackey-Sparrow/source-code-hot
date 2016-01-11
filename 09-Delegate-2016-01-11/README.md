@@ -20,6 +20,10 @@
 和stopPropagation的区别
 
 $('p').click(function(e){
+    console.log('会执行');
+});
+
+$('p').click(function(e){
     e.stopImmediatePropagation();
 });
 
