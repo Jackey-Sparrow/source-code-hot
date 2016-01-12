@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myForm" name="form">
+    <input id="myName"/>
+    <input type="submit" id="myBtn"/>
+</form>
+
+</body>
+<script>
+    //使用捕获机制来实现冒泡，这样父元素就能获得目标元素的focus和blur事件
+    var myForm = document.getElementById('myForm');
+    var myName = document.getElementById('myName');
+    var myBtn = document.getElementById('myBtn');
+
+
+    //    myForm.addEventListener('focus', function (e) {
+    //        console.log('parent focus');
+    //    }, true);//set to true, capture
+    //
+    //    myName.addEventListener('focus', function (e) {
+    //        console.log('focus');
+    //    }, false);
+    //
+    //    document.addEventListener('focus', function (e) {
+    //        console.log('document');
+    //    }, true);//set to true, capture
+
+    //===========================submit =====================
+
+    document.addEventListener('submit', function (e) {
+        console.log('document submit');
+    }, true);//set to true, capture
+
+    myForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        console.log('parent submit');
+    }, true);//set to true, capture
+
+    myBtn.addEventListener('submit', function (e) {
+        e.preventDefault();
+        console.log('submit');
+    }, false);
+
+    //在IE6-8下，submit不会冒泡到顶层，它只执行form元素的submit回调，冒泡到顶层，就提交跳转。
+    // submit事件跟鼠标事件和键盘事件不一样，它是一种符合事件，既可通过鼠标事件也可以通过键盘事件实现
+    //    document.attachEvent('submit', function (e) {
+    //        console.log('document submit');
+    //    });//set to true, capture
+    //
+    //    myForm.attachEvent('submit', function (e) {
+    //        e.preventDefault();
+    //        console.log('parent submit');
+    //    });//set to true, capture
+    //
+    //    myName.attachEvent('submit', function (e) {
+    //        //e.preventDefault();
+    //        console.log('submit');
+    //
+    //    });
+
+
+</script>
+</html>
