@@ -10,3 +10,8 @@
 7. Drag
 8. Type Judgment
 9. Delegate
+10. Bubble and Capture
+11. Touch-swipe
+12. zepto
+13. U don't need jq
+14. browser teller
