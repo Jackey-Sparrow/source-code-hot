@@ -6,7 +6,7 @@ var Teller = (function (window) {
     var matched, browser;
 
     function unMatch(ua) {
-        
+
         ua = ua.toLocaleLowerCase();
         var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
             /(webkit)[ \/]([\w.]+)/.exec(ua) ||
