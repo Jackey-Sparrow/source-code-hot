@@ -6,6 +6,7 @@ var Teller = (function (window) {
     var matched, browser;
 
     function unMatch(ua) {
+        
         ua = ua.toLocaleLowerCase();
         var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
             /(webkit)[ \/]([\w.]+)/.exec(ua) ||
@@ -39,5 +40,7 @@ var Teller = (function (window) {
     else if (browser.webkit) {
         browser.safari = true;
     }
+
     return browser;
+
 })(window);
