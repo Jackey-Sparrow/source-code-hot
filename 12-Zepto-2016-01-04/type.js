@@ -3,53 +3,57 @@
  */
 var Type = (function () {
 
-    var class2type = {},
-        toString = class2type.toString,
-        type = {};
+	var class2type = {},
+		toString = class2type.toString,
+		type = {};
 
-    function getType(obj) {
-        return obj == null ? String(obj) :
-        class2type[toString.call(obj)] || "object"
-    }
+	("Boolean Number String Function Array Date RegExp Object Error").split(" ").forEach(function (item) {
+		class2type["[object " + item + "]"] = item.toLowerCase()
+	});
 
-    function isFunction(value) {
-        return getType(value) == "function";
-    }
+	function getType(obj) {
+		return obj == null ? String(obj) :
+		class2type[toString.call(obj)] || "object"
+	}
 
-    function isWindow(obj) {
-        return obj != null && obj == obj.window;
-    }
+	function isFunction(value) {
+		return getType(value) == "function";
+	}
 
-    function isDocument(obj) {
-        return obj != null && obj.nodeType == obj.DOCUMENT_NODE;
-    }
+	function isWindow(obj) {
+		return obj != null && obj == obj.window;
+	}
 
-    function isObject(obj) {
-        return getType(obj) == "object";
-    }
+	function isDocument(obj) {
+		return obj != null && obj.nodeType == obj.DOCUMENT_NODE;
+	}
 
-    function isPlainObject(obj) {
-        return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype;
-    }
+	function isObject(obj) {
+		return getType(obj) == "object";
+	}
 
-    function likeArray(obj) {
-        return typeof obj.length == 'number';
-    }
+	function isPlainObject(obj) {
+		return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+	}
 
-    var isArray = Array.isArray ||
-        function (object) {
-            return object instanceof Array;
-        };
+	function likeArray(obj) {
+		return typeof obj.length == 'number';
+	}
 
-    type.isFunction = isFunction;
-    type.isWindow = isWindow;
-    type.isDocument = isDocument;
-    type.isObject = isObject;
-    type.isPlainObject = isPlainObject;
-    type.likeArray = likeArray;
-    type.isArray = isArray;
+	var isArray = Array.isArray ||
+		function (object) {
+			return object instanceof Array;
+		};
 
-    return type;
+	type.isFunction = isFunction;
+	type.isWindow = isWindow;
+	type.isDocument = isDocument;
+	type.isObject = isObject;
+	type.isPlainObject = isPlainObject;
+	type.likeArray = likeArray;
+	type.isArray = isArray;
+
+	return type;
 })();
 
 window.Type = Type;
