@@ -10,6 +10,38 @@
 		this.style.cssText += ';' + css;//兼容写法
 
 ```
+var cssNumber = {//这是一些不需要加px为后缀的css集合
+                'column-count': 1,
+                'columns': 1,
+                'font-weight': 1,
+                'line-height': 1,
+                'opacity': 1,
+                'z-index': 1,
+                'zoom': 1
+            };
+
+ //转为驼峰
+ //dd-dd ->ddDd
+ //dd--dd-> ddDd
+ ///-+(.)?/g 一个或者多个'-'， 最多一个'.',全局搜索
+ function camelize(str) {
+     return str.replace(/-+(.)?/g, function (match, chr) {
+         return chr ? chr.toUpperCase() : '';
+     });
+ }
+
+ function dasherize(str) {
+     return str.replace(/::/g, '/')//dd::dd -> dd/dd
+         .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')//'Ddddd'-> 'dDDD' 'DDdd'->'D_Ddd'
+         .replace(/([a-z\d])([A-Z])/g, '$1_$2')//myName-> my_Name
+         .replace(/_/g, '-')//
+         .toLowerCase();
+ }
+
+//cssNumber中的不需要加px后缀，其他的需要
+ function maybeAddPx(name, value) {
+     return (typeof value == "number" && !cssNumber[dasherize(name)]) ? value + "px" : value;
+ }
 
  var css = function(property, value) {
 
