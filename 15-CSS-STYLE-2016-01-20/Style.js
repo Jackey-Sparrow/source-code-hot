@@ -1,20 +1,8 @@
-## $('xx').css('') or  $('xx').css(property,value)
-###### å‘ç”Ÿä»€ä¹ˆäº‹æƒ…ï¼Œå½“ä½ ä½¿ç”¨cssæ–¹æ³•çš„æ—¶å€™
----
-
-å…³é”®çŸ¥è¯†ç‚¹ï¼š
-1. get propertyçš„æ—¶å€™
-			element.style[camelize(property)] || getComputedStyle(element, '').computedStyle.getPropertyValue(property);
-			getComputedStyle(element, '').computedStyle.getPropertyValue(property); æ”¯æŒåº¦ä¸ºie9+ chrome firefox opera safari
-2 set propertyçš„æ—¶å€™
-		this.style.cssText += ';' + css;//å…¼å®¹å†™æ³•
-
-```
 /**
  * Created by Jackey Li on 2016/1/20.
  */
 
-var cssNumber = {//è¿™æ˜¯ä¸€äº›ä¸éœ€è¦åŠ pxä¸ºåç¼€çš„cssé›†åˆ
+var cssNumber = {//ÕâÊÇÒ»Ğ©²»ĞèÒª¼ÓpxÎªºó×ºµÄcss¼¯ºÏ
     'column-count': 1,
     'columns': 1,
     'font-weight': 1,
@@ -24,10 +12,10 @@ var cssNumber = {//è¿™æ˜¯ä¸€äº›ä¸éœ€è¦åŠ pxä¸ºåç¼€çš„cssé›†åˆ
     'zoom': 1
 };
 
-//è½¬ä¸ºé©¼å³°
+//×ªÎªÍÕ·å
 //dd-dd ->ddDd
 //dd--dd-> ddDd
-///-+(.)?/g ä¸€ä¸ªæˆ–è€…å¤šä¸ª'-'ï¼Œ æœ€å¤šä¸€ä¸ª'.',å…¨å±€æœç´¢
+///-+(.)?/g Ò»¸ö»òÕß¶à¸ö'-'£¬ ×î¶àÒ»¸ö'.',È«¾ÖËÑË÷
 function camelize(str) {
     return str.replace(/-+(.)?/g, function (match, chr) {
         return chr ? chr.toUpperCase() : '';
@@ -42,7 +30,7 @@ function dasherize(str) {
         .toLowerCase();
 }
 
-//cssNumberä¸­çš„ä¸éœ€è¦åŠ pxåç¼€ï¼Œå…¶ä»–çš„éœ€è¦
+//cssNumberÖĞµÄ²»ĞèÒª¼Ópxºó×º£¬ÆäËûµÄĞèÒª
 function maybeAddPx(name, value) {
     return (typeof value == "number" && !cssNumber[dasherize(name)]) ? value + "px" : value;
 }
@@ -82,23 +70,23 @@ var css = function (property, value) {
             //value = undefined
             //value = null
             this.each(function () {
-                //ç§»é™¤å±æ€§
+                //ÒÆ³ıÊôĞÔ
                 this.style.removeProperty(dasherize(property));
             });
         } else {
-            //æ·»åŠ å±æ€§
+            //Ìí¼ÓÊôĞÔ
             css = dasherize(property) + ':' + maybeAddPx(property, value);
         }
     } else {
         //$('').css({'width',10});
         for (key in property) {
             if (!property[key] && property[key] !== 0) {
-                //ç§»é™¤å±æ€§
+                //ÒÆ³ıÊôĞÔ
                 this.each(function () {
                     this.style.removeProperty(dasherize(key));
                 });
             } else {
-                //æ·»åŠ å±æ€§
+                //Ìí¼ÓÊôĞÔ
                 css += dasherize(key) + ':' + maybeAddPx(key, property[key]) + ';';
             }
         }
@@ -110,6 +98,3 @@ var css = function (property, value) {
     });
 
 }
-
-
-```
