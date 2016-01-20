@@ -9,7 +9,7 @@
 			getComputedStyle(element, '').computedStyle.getPropertyValue(property); 支持度为ie9+ chrome firefox opera safari
 2. set property的时候
 		this.style.cssText += ';' + css;//兼容写法
-		
+
 ```
 
 ```
