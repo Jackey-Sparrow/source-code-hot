@@ -4,7 +4,10 @@
 
 关键知识点：
 1. get property的时候
-
+			element.style[camelize(property)] || getComputedStyle(element, '').computedStyle.getPropertyValue(property);
+			getComputedStyle(element, '').computedStyle.getPropertyValue(property); 支持度为ie9+ chrome firefox opera safari
+2 set property的时候
+		this.style.cssText += ';' + css;//兼容写法
 
 ```
 
