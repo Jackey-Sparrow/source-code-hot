@@ -8,4 +8,10 @@
 	arr.forEach(function (item) {
 		console.log(this);
 	}, 5);
+
+	var isFunc = true;
+
+	if (!isFunc)
+		console.log('1');
+	return
 })();

@@ -30,7 +30,7 @@ hihi
 
 
 <ul>
-    <li></li>
+    <li id="test"></li>
 </ul>
 
 <select id="s" multiple="multiple" size="2">
@@ -39,6 +39,7 @@ hihi
 </select>
 
 <input type="text" id="inp" value="ddd">
+<input type="button" id="btn" value="btn">
 </body>
 <script>
     $('ul');
@@ -47,5 +48,11 @@ hihi
     $('#li2');
     $('#li2').text()
     $('#li2').html()
+
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function (event) {
+       console.log(event);
+    });
 </script>
 </html>

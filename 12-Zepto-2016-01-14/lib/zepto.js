@@ -1038,7 +1038,7 @@ window.$ === undefined && (window.$ = Zepto)
 	function add(element, events, fn, data, selector, delegator, capture) {
 		//获得元素的zid和handler里面的记录
 		var id = zid(element),
-				set = (handlers[id] || (handlers[id] = []))
+			set = (handlers[id] || (handlers[id] = []))
 
 		//根据空格切割成数组
 		events.split(/\s/).forEach(function (event) {
