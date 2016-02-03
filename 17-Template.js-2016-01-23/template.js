@@ -2,7 +2,9 @@
  * Created by lja on 2016-1-22.
  */
 (function () {
+    
     'use strict';
+
     //todo: not finish
     var TemplateEngine = function (tpl, data) {
         //todo:
