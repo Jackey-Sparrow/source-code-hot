@@ -12,7 +12,7 @@
 9. Delegate
 10. Bubble and Capture
 11. Touch-swipe
-12. zepto
+12. zepto (still working)
 13. U don't need jq
 14. browser teller
 15. Css Style
