@@ -6,10 +6,6 @@
 
     var methods = ['set', 'get'];
 
-    methods.forEach(function (method) {
-
-    });
-
     //one param: string
     //multi param
     //function
@@ -18,5 +14,14 @@
         if (arguments.length == 1) {
             //if(){}
         }
+
+        //todo:
+        var propertyName = '';
+        var self = this;
+        methods.forEach(function (method) {
+            self[method + propertyName] = function () {
+                
+            };
+        });
     }
 })();
