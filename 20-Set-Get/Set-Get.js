@@ -20,7 +20,7 @@
         var self = this;
         methods.forEach(function (method) {
             self[method + propertyName] = function () {
-                
+
             };
         });
     }
