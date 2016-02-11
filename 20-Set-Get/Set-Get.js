@@ -14,9 +14,10 @@
         if (arguments.length == 1) {
             //if(){}
         }
-        
 
-        //todo:
+
+
+        //todo: loop
         var propertyName = '';
         var self = this;
         methods.forEach(function (method) {
