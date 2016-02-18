@@ -14,6 +14,7 @@
         if (arguments.length == 1) {
             //if(){}
         }
+
         
         //todo: loop
         var propertyName = '';
