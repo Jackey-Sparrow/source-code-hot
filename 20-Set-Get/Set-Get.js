@@ -15,6 +15,7 @@
             //if(){}
         }
 
+
         //todo: loop
         var propertyName = '';
         var self = this;
