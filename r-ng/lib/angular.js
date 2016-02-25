@@ -6,36 +6,7 @@
 (function (window, document, undefined) {
 	'use strict';
 
-	/**
-	 * @description
-	 *
-	 * This object provides a utility for producing rich Error messages within
-	 * Angular. It can be called as follows:
-	 *
-	 * var exampleMinErr = minErr('example');
-	 * throw exampleMinErr('one', 'This {0} is {1}', foo, bar);
-	 *
-	 * The above creates an instance of minErr in the example namespace. The
-	 * resulting error will have a namespaced error code of example.one.  The
-	 * resulting error will replace {0} with the value of foo, and {1} with the
-	 * value of bar. The object is not restricted in the number of arguments it can
-	 * take.
-	 *
-	 * If fewer arguments are specified than necessary for interpolation, the extra
-	 * interpolation markers will be preserved in the final string.
-	 *
-	 * Since data will be parsed statically during a build step, some restrictions
-	 * are applied with respect to how minErr instances are created and called.
-	 * Instances should have names of the form namespaceMinErr for a minErr created
-	 * using minErr('namespace') . Error codes, namespaces and template strings
-	 * should all be static strings, not variables or general expressions.
-	 *
-	 * @param {string} module The namespace to use for the new minErr instance.
-	 * @param {function} ErrorConstructor Custom error constructor to be instantiated when returning
-	 *   error from returned function, for cases when a particular type of error is useful.
-	 * @returns {function(code:string, template:string, ...templateArgs): Error} minErr instance
-	 */
-
+	//抛出错误信息
 	function minErr(module, ErrorConstructor) {
 		ErrorConstructor = ErrorConstructor || Error;
 		return function () {
@@ -182,43 +153,29 @@
 	 *
 	 * <div doc-module-components="ng"></div>
 	 */
-
+	//todo
 	var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
 
 // The name of a form control's ValidityState property.
 // This is used so that it's possible for internal tests to create mock ValidityStates.
+	//todo
 	var VALIDITY_STATE_PROPERTY = 'validity';
 
-	/**
-	 * @ngdoc function
-	 * @name angular.lowercase
-	 * @module ng
-	 * @kind function
-	 *
-	 * @description Converts the specified string to lowercase.
-	 * @param {string} string String to be converted to lowercase.
-	 * @returns {string} Lowercased string.
-	 */
+	//先检测类型，再转化为小写
 	var lowercase = function (string) {
 		return isString(string) ? string.toLowerCase() : string;
 	};
+
+	//是否具有该属性，不包括原型上的属性
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-	/**
-	 * @ngdoc function
-	 * @name angular.uppercase
-	 * @module ng
-	 * @kind function
-	 *
-	 * @description Converts the specified string to uppercase.
-	 * @param {string} string String to be converted to uppercase.
-	 * @returns {string} Uppercased string.
-	 */
+	//先检测类型，再转化为大写
 	var uppercase = function (string) {
 		return isString(string) ? string.toUpperCase() : string;
 	};
 
 
+	//先检测类型，再用正则表达式把大写字母转换为小写
 	var manualLowercase = function (s) {
 		/* jshint bitwise: false */
 		return isString(s)
@@ -227,6 +184,8 @@
 		})
 			: s;
 	};
+
+	//先检测类型，再用正则表达式把小写字母转换为大写
 	var manualUppercase = function (s) {
 		/* jshint bitwise: false */
 		return isString(s)
@@ -257,7 +216,6 @@
 		getPrototypeOf = Object.getPrototypeOf,
 		ngMinErr = minErr('ng'),
 
-		/** @name angular */
 		angular = window.angular || (window.angular = {}),
 		angularModule,
 		uid = 0;
@@ -268,13 +226,8 @@
 	 */
 	msie = document.documentMode;
 
-
-	/**
-	 * @private
-	 * @param {*} obj
-	 * @return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,
-	 *                   String ...)
-	 */
+	//检测是否类似数组
+	//NodeList, Arguments,String。。。
 	function isArrayLike(obj) {
 		if (obj == null || isWindow(obj)) {
 			return false;
