@@ -37,6 +37,7 @@
 		};
 	}
 
+
 	function toDebugString(obj) {
 		if (typeof obj === 'function') {
 			return obj.toString().replace(/ \{[\s\S]*$/, '');
