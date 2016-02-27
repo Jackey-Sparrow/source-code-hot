@@ -13,6 +13,7 @@
 				message = '[' + (module ? module + ':' : '') + code + '] ',
 				template = templateArgs[1],
 				paramPrefix, i;
+				
 
 			message += template.replace(/\{\d+\}/g, function (match) {
 				var index = +match.slice(1, -1),
