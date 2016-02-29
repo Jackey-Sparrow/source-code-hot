@@ -42,7 +42,7 @@
 	}
 
 
-	
+
 	/**
 	 * @ngdoc module
 	 * @name ng
@@ -1434,6 +1434,10 @@
 	 </file>
 	 </example>
 	 */
+
+
+
+	//根据element，匹配ngAttrPrefixes+'app',例如ng-app
 	function angularInit(element, bootstrap) {
 		var appElement,
 			module,
