@@ -9,6 +9,7 @@
 			var SKIP_INDEXES = 2;
 
 
+
 			var templateArgs = arguments,
 				code = templateArgs[0],
 				message = '[' + (module ? module + ':' : '') + code + '] ',
