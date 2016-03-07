@@ -1897,6 +1897,7 @@
 					var config = invokeLater('$injector', 'invoke', 'push', configBlocks);
 
 					/** @type {angular.Module} */
+					//module的实例
 					var moduleInstance = {
 						// Private state
 						_invokeQueue: invokeQueue,
@@ -2100,10 +2101,30 @@
 						}
 					};
 
+					//angular.module('myApp',requires,configFn)
+					//如果有传递第三个参数
 					if (configFn) {
 						config(configFn);
 					}
 
+					//返回module实例
+					//_configBlocks:array
+					//_invokeQueue: Array[0]
+					//_runBlocks: Array[0]
+					//animation:
+					//config:
+					//constant:
+					//controller:
+					//decorator:
+					//directive:
+					//factory:
+					//filter:
+					//name: "myApp"
+					//provider:
+					//requires: Array[0]
+					//run: (block)
+					//service:
+					//value: ()
 					return moduleInstance;
 
 					/**
