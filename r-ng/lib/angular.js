@@ -1873,6 +1873,7 @@
 					}
 				};
 
+				//检查是否name=='hasOwnProperty'
 				assertNotHasOwnProperty(name, 'module');
 				if (requires && modules.hasOwnProperty(name)) {
 					modules[name] = null;
