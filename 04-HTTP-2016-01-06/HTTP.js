@@ -2,12 +2,11 @@
  * Created by lja on 2016/1/6.
  */
 (function () {
-	'use strict';
+    'use strict';
 
-	/*
-	 * http1.1 中有8中方法
-	 */
-
+    /*
+     * http1.1 中有8中方法
+     */
 
 
 })();

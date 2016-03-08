@@ -19,7 +19,7 @@
 //		animationDelay
 // 支持度： IE10 FIREFOX OPERA CHROME SAFARI
 
-    //高版本的浏览器是不需要加前缀的�?�只有低版本浏览器才�?要加
+    //高版本的浏览器是不需要加前缀的�?�只有低版本浏览器才�?要加
     //-ms- 低版本的IE
     //-webkit- webkit内核 chrome safari
     //-moz- firefox
@@ -49,14 +49,14 @@
         return eventPrefix ? eventPrefix + name : name.toLowerCase();
     }
 
-    //小写和大写之间加�?�?'-',并全部小写输�?
+    //小写和大写之间加�?�?'-',并全部小写输�?
     function dasherize(str) {
         return str.replace(/([a-z])([A-Z])/, '$1-$2').toLowerCase()
     }
 
     //-webkit-
     //webkit
-    //判断前缀�?-webkit- || -o- || -moz-
+    //判断前缀�?-webkit- || -o- || -moz-
     $.each(vendors, function (vendor, event) {
         if (testEl.style[vendor + 'TransitionProperty'] !== undefined) {
             prefix = '-' + vendor.toLowerCase() + '-';
@@ -110,7 +110,7 @@
         //may be 'fast' or 'slow'
         if (duration) {
             duration = (typeof duration === 'number' ? duration :
-                    ($.fx.speeds[duration] || $.fx.speeds._default)) / 1000;
+                ($.fx.speeds[duration] || $.fx.speeds._default)) / 1000;
         }
 
         return this.anim(properties, duration, ease, callback, delay);
@@ -126,12 +126,12 @@
             endEvent = $.fx.transitionEnd,
             fired = false;
 
-        //确保duration有�??
+        //确保duration有�??
         if (duration === undefined) {
             duration = $.fx.speeds._default / 1000;
         }
 
-        //确保delay有�??
+        //确保delay有�??
         if (delay === undefined) {
             delay = 0;
         }
@@ -154,7 +154,7 @@
             endEvent = $.fx.animationEnd;
         } else {
             cssProperties = [];
-            //properties为对�?
+            //properties为对�?
             for (key in properties) {
                 // /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,
                 //transition
@@ -163,7 +163,7 @@
                     transforms += key + '(' + properties[key] + ') ';
                 } else {
                     //$('').animate({left:'',top:''},xxxx);
-                    //�?般用得最多的还是平常的属�?
+                    //�?般用得最多的还是平常的属�?
                     cssValues[key] = properties[key];
                     cssProperties.push();
                 }
