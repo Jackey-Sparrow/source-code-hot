@@ -1,0 +1,35 @@
+<!--<div class="rightnav-toolbar">-->
+<!--<a class="button pencilButton" on-tap="openScreenshot()">-->
+<!--<i class="icon ion-more itwo-icon-pencil"></i>-->
+<!--</a>-->
+
+<!--<div class="screenshot-toolbar slide out">-->
+<!--<a class="button" ng-class="penStatus.pencil" on-tap="pencilTap()">-->
+<!--<i class="icon ion-more itwo-icon-pencil"></i>-->
+<!--</a>-->
+<!--<a class="button" ng-class="penStatus.eraser" on-tap="eraserTap()">-->
+<!--<i class="icon ion-more itwo-icon-brush"></i>-->
+<!--</a>-->
+<!--<a class="button" ng-class="penStatus.email" on-tap="emailTap()">-->
+<!--<i class="icon ion-more itwo-icon-cut"></i>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="screen-shot">
+    <a class="pencilButton" data-ng-click="openScreenshot()">
+        <i class="screen-shot-icon itwo-icon-pencil"></i>
+    </a>
+
+    <div class="screenshot-toolbar slide out">
+        <a class="paint" ng-class="penStatus.pencil" data-ng-click="pencilTap()">
+            <i class="icon ion-more itwo-icon-pencil"></i>
+        </a>
+        <a class="eraser" ng-class="penStatus.eraser" data-ng-click="eraserTap()">
+            <i class="icon ion-more itwo-icon-brush"></i>
+        </a>
+        <a class="shot" ng-class="penStatus.email" data-ng-click="emailTap()">
+            <i class="icon ion-more itwo-icon-cut"></i>
+        </a>
+    </div>
+</div>

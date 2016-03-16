@@ -1,0 +1,47 @@
+.screen-shot {
+    width: 80px;
+    height: 80px;
+}
+
+.screen-shot .pencilButton {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: yellow;
+}
+
+.screen-shot .pencilButton i {
+    margin: 5px 5px 5px 5px;
+    display: block;
+}
+
+.screen-shot .itwo-icon-penciloff:before {
+    content: "\e928";
+}
+
+.screen-shot .itwo-icon-pencil:before {
+    content: "\e915";
+}
+
+.screen-shot .screenshot-toolbar {
+    width: 240px;
+    height: 80px;
+}
+
+.screen-shot .screenshot-toolbar a {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+}
+
+.screen-shot .screenshot-toolbar a.paint{
+    background-color: #4d4d4d;
+}
+
+.screen-shot .screenshot-toolbar a.eraser{
+    background-color: #0a9ec7;
+}
+
+.screen-shot .screenshot-toolbar a.shot{
+    background-color: #4cd964;
+}
