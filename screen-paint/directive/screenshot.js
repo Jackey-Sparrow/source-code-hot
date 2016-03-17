@@ -16,11 +16,7 @@
 				return {
 
 					restrict: 'AE',
-
-					replace: false,
-
 					scope: {
-						//ngModel: '='
 						selector: '='
 					},
 					template: template,
