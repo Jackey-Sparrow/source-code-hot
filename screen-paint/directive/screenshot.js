@@ -12,19 +12,21 @@
 		['platformsDeviceService',
 			function (platformsDeviceService) {
 				var template = '';
-				var randomId = Math.floor(Math.random() * 1000 + 1).toString();
+
+
 				return {
 
 					restrict: 'AE',
 					scope: {
 						selector: '='
 					},
-					template: template,
+					template: '',
 					link: linkFn
 				}
 
 				function linkFn($scope) {
 					var canvasAttrs = "background-color:transparent;";
+					var randomId = Math.floor(Math.random() * 1000 + 1).toString();
 					var options = {
 						id: 'pen_' + randomId,
 						title: 'Pen',
