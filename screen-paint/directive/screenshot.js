@@ -11,7 +11,8 @@
 	angular.module(moduleName).directive('screenshot',
 		['platformsDeviceService',
 			function (platformsDeviceService) {
-				
+
+				//still refactory
 				return {
 
 					restrict: 'AE',
