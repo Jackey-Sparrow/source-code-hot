@@ -11,9 +11,7 @@
 	angular.module(moduleName).directive('screenshot',
 		['platformsDeviceService',
 			function (platformsDeviceService) {
-				var template = '';
-
-
+				
 				return {
 
 					restrict: 'AE',
