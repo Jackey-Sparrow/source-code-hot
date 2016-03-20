@@ -122,7 +122,7 @@
                         div.height = h;
                         div.className = 'divpen-canvas';
                         div.appendChild(canvas);
-                        document.body.appendChild(div);
+                        container.append(div);
                         setTimeout(function () {
                             canvas.addEventListener("touchstart", onPanelDragStart, false);
                             canvas.addEventListener("touchend", onPanelDragEnd, false);
@@ -170,10 +170,7 @@
                         options.eraserStatus = boolvalue;
                     };
 
-                    penView.destroy = function () {
-                        var canvas = jQuery('#' + options.id).remove();
-                        jQuery(canvas).remove();
-                    };
+
                     onInitialize();
                 }
             }]);

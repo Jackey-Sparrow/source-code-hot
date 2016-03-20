@@ -11,6 +11,8 @@
                 selector: 'body'
             };
 
+            var compile;
+
             function screenShotOptions(options) {
                 defaultOptions = angular.extend(defaultOptions, options);
             }
@@ -24,10 +26,15 @@
                 return defaultOptions;
             }
 
+            function destroy() {
+                angular.element(defaultOptions.selector).remove(compile);
+            }
+
             return {
                 screenShotOptions: screenShotOptions,
                 getOptions: getOptions,
-                openPaint: openPaint
+                openPaint: openPaint,
+                destroy: destroy
             };
         }]);
 })(angular);

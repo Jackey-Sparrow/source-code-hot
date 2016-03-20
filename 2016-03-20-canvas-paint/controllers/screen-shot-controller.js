@@ -16,5 +16,9 @@
                     screenShotService.openPaint($scope);
                 };
 
+                $scope.closePaint = function () {
+                    screenShotService.destroy();
+                };
+
             }]);
 })(angular);
