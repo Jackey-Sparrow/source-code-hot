@@ -18,11 +18,12 @@
                     scope: {},
                     template: '',
                     link: linkFn
-                }
+                };
 
                 function linkFn($scope, element) {
                     var options = screenShotService.getOptions();
                     var canvasAttrs = "background-color:transparent;";
+                    var canvas;
 
                     function onInitialize() {
 
@@ -30,24 +31,11 @@
                             h = container.height() - 44,
                             w = container.width(),
                             top = '55px';
-                        var canvas = document.createElement('canvas');
-                        canvas.id = options.canvasId;
-                        canvas.className = 'pen-canvas';
-                        if (platformsDeviceService.statusBar) {
-                            top = '75px';
-                        }
-                        canvas.setAttribute('style', "background-color:transparent;");
-                        canvas.width = w;
-                        canvas.height = h;
 
-                        var div = document.createElement('div');
-                        //div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
-                        div.setAttribute('style', 'top:' + top);
-                        div.width = w;
-                        div.height = h;
-                        div.className = 'screen-shot-canvas-box';
-                        div.appendChild(canvas);
-                        element.append(div);
+                        var canvasBox = createCanvasBox(w, h, top);
+                        canvas = createCanvas(w, h);
+                        canvasBox.appendChild(canvas);
+                        element.append(canvasBox);
                         setTimeout(function () {
                             canvas.addEventListener("touchstart", onPanelDragStart, false);
                             canvas.addEventListener("touchend", onPanelDragEnd, false);
@@ -56,8 +44,30 @@
                         }, 200);
                     }
 
+                    function createCanvasBox(width, height, top) {
+                        var canvasBox = document.createElement('div');
+                        canvasBox.setAttribute('style', 'top:' + top);
+                        canvasBox.width = width;
+                        canvasBox.height = height;
+                        canvasBox.className = 'screen-shot-canvas-box';
+                        return canvasBox;
+                    }
+
+                    function createCanvas(width, height) {
+                        var canvas = document.createElement('canvas');
+                        canvas.id = options.canvasId;
+                        canvas.className = 'pen-canvas';
+                        if (platformsDeviceService.statusBar) {
+                            top = '75px';
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        return canvas;
+                    }
+
                     function onPanelDragStart(e) {
-                        var canvas = getInternalCanvas(),
+                        var
                             ctx = canvas.getContext('2d'),
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
@@ -75,7 +85,7 @@
                     }
 
                     function onPanelMove(e) {
-                        var canvas = getInternalCanvas(),
+                        var
                             ctx = canvas.getContext('2d'),
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
@@ -109,21 +119,21 @@
                     }
 
                     function onPanelDragEnd(e) {
-                        var canvas = getInternalCanvas();
+                        //var canvas = getInternalCanvas();
                         options.canDrag = false;
                         canvas.onmousemove = null;
                         options.preX = 0;
                         options.preY = 0;
                     }
 
-                    function getInternalCanvas() {
-                        var canvas = document.getElementById(options.canvasId);
-                        return canvas;
-                    }
+                    //function getInternalCanvas() {
+                    //    var canvas = document.getElementById(options.canvasId);
+                    //    return canvas;
+                    //}
 
                     function beginNewDraw(penStyle) {
 
-                        var canvas = getInternalCanvas();
+                        //var canvas = getInternalCanvas();
                         var context = canvas.getContext('2d');
                         penStyle = (penStyle != undefined) ? penStyle : options.config.penStyle;
                         var penWidth = options.config.penWidth;
@@ -132,8 +142,9 @@
                     }
 
                     function Canvaseraser(x, y) {
-                        var canvas = getInternalCanvas(),
-                            ctx = canvas.getContext('2d');
+                        //var canvas = getInternalCanvas(),
+                        //    ctx = canvas.getContext('2d');
+                        var ctx = canvas.getContext('2d');
                         ctx.globalCompositeOperation = 'destination-out';
                         ctx.beginPath();
                         ctx.arc(x, y, 15, 0, Math.PI * 2);
@@ -144,8 +155,8 @@
 
                     penView.clearCanvas = function () {
                         //clear
-                        var me = penView;
-                        var canvas = getInternalCanvas();
+                        //var me = penView;
+                        //var canvas = getInternalCanvas();
                         var context = canvas.getContext('2d');
                         context.beginPath();
                         context.clearRect(0, 0, ctx.canvas.offsetWidth, ctx.canvas.offsetHeight);
@@ -158,5 +169,10 @@
 
                     onInitialize();
                 }
-            }]);
-}());
+            }
+        ])
+    ;
+}
+()
+)
+;

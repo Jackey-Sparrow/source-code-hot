@@ -10,44 +10,45 @@
             var randomId = Math.floor(Math.random() * 1000 + 1).toString();
             var hasCanvas = false;
             var defaultOptions = {
-                selector: 'body',
-                canvasId: 'pen_' + randomId,
-                title: 'Pen',
-                //config
-                canDrag: false,
-                offsetTop: 47,
-                eraserStatus: false,
-                preX: 0,
-                preY: 0,
-                config: {
-                    penStyle: '#ff0000',
-                    penWidth: 4
-                }
-            };
+                    selector: 'body',
+                    canvasId: 'pen_' + randomId,
+                    title: 'Pen',
+                    //config
+                    canDrag: false,
+                    offsetTop: 47,
+                    eraserStatus: false,
+                    preX: 0,
+                    preY: 0,
+                    config: {
+                        penStyle: '#ff0000',
+                        penWidth: 4
+                    }
+                },
+                options;
 
             var compile;
 
-            function screenShotOptions(options) {
-                defaultOptions = angular.extend(defaultOptions, options);
-            }
-
-            function openPaint($scope) {
+            function openPaint($scope, op) {
                 if (!hasCanvas) {
+                    options = angular.copy(defaultOptions);
+                    angular.extend(options, op);
                     compile = $compile('<div data-screen-shot id="screen-shot"></div>')($scope);
-                    angular.element(defaultOptions.selector).append(compile);
+                    angular.element(options.selector).append(compile);
+                    hasCanvas = true;
                 }
             }
 
             function getOptions() {
-                return defaultOptions;
+                return options ? options : defaultOptions;
             }
 
             function destroy() {
                 angular.element(compile).remove();
+                options = void(0);
+                hasCanvas = false;
             }
 
             return {
-                screenShotOptions: screenShotOptions,
                 getOptions: getOptions,
                 openPaint: openPaint,
                 destroy: destroy
