@@ -12,7 +12,11 @@
             };
 
             function screenShotOptions(options) {
-                angular.extend();
+                angular.extend(defaultOptions, options);
             }
+
+            return {
+                screenShotOptions: screenShotOptions
+            };
         }]);
 })(angular);

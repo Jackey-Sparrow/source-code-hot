@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Title</title>
-    <script src="../screen-paint/lib/jquery-2.1.0.js"></script>
-    <script src="../screen-paint/lib/angular.js"></script>
-    <script src="../screen-paint/lib/angular-ui-router.js"></script>
-    <script src="../screen-paint/module.js"></script>
-    <script src="../screen-paint/directive/platform-device-service.js"></script>
-    <script src="../screen-paint/directive/screen-shot.js"></script>
+    <script src="lib/jquery-2.1.0.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-ui-router.js"></script>
+    <script src="module.js"></script>
+    <script src="directive/platform-device-service.js"></script>
+    <script src="services/screen-shot-service.js"></script>
+    <script src="directive/screen-shot.js"></script>
+    <script src="controllers/screen-shot-controller.js"></script>
 </head>
-<body >
+<body data-ng-controller="screenShotController">
+<button>open paint</button>
 <div class="paint" style="width: 400px;height: 500px;"></div>
-<screenshot></screenshot>
 </body>
 
 </html>
