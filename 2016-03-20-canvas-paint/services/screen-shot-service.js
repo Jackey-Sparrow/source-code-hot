@@ -7,8 +7,23 @@
     angular.module('screenShot').factory('screenShotService',
         ['$compile', function ($compile) {
 
+            var randomId = Math.floor(Math.random() * 1000 + 1).toString();
+            var hasCanvas = false;
             var defaultOptions = {
-                selector: 'body'
+                selector: 'body',
+                id: 'pen_' + randomId,
+                title: 'Pen',
+                //config
+                canDrag: false,
+                offsetTop: 47,
+                eraserStatus: false,
+                preX: 0,
+                preY: 0,
+                config: {
+                    penStyle: '#ff0000',
+                    penWidth: 4
+                },
+                canvasClassName: 'divpen-canvas'
             };
 
             var compile;
@@ -18,8 +33,10 @@
             }
 
             function openPaint($scope) {
-                var compile = $compile('<div data-screen-shot></div>')($scope);
-                angular.element(defaultOptions.selector).append(compile);
+                if (!hasCanvas) {
+                    compile = $compile('<div data-screen-shot id="screen-shot-box"></div>')($scope);
+                    angular.element(defaultOptions.selector).append(compile);
+                }
             }
 
             function getOptions() {
@@ -27,7 +44,7 @@
             }
 
             function destroy() {
-                angular.element(defaultOptions.selector).remove(compile);
+                angular.element('.' + defaultOptions.canvasClassName).remove();
             }
 
             return {

@@ -14,7 +14,6 @@
 
                 //still refactor
                 return {
-
                     restrict: 'AE',
                     scope: {},
                     template: '',
@@ -22,23 +21,8 @@
                 }
 
                 function linkFn($scope) {
-                    var optionsNew = screenShotService.getOptions();
+                    var options = screenShotService.getOptions();
                     var canvasAttrs = "background-color:transparent;";
-                    var randomId = Math.floor(Math.random() * 1000 + 1).toString();
-                    var options = {
-                        id: 'pen_' + randomId,
-                        title: 'Pen',
-                        //config
-                        dragok: false,
-                        offsetTop: 47,
-                        eraserStatus: false,
-                        preX: 0,
-                        preY: 0,
-                        config: {
-                            penStyle: '#ff0000',
-                            penWidth: 4
-                        }
-                    };
 
                     function onPanelDragStart(e) {
                         var canvas = getInternalCanvas(),
@@ -50,10 +34,10 @@
                         options.preX = x;
                         options.preY = y;
                         beginNewDraw();
-                        if (!options.dragok) {
+                        if (!options.canDrag) {
                             ctx.moveTo(x, y);
                         }
-                        options.dragok = true;
+                        options.canDrag = true;
                         canvas.onmousemove = onPanelMove;
                         canvas.ontouchmove = onPanelMove;
                     }
@@ -63,7 +47,7 @@
                             ctx = canvas.getContext('2d'),
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
-                        if (options.dragok) {
+                        if (options.canDrag) {
                             if (options.eraserStatus) {
                                 //橡皮
                                 Canvaseraser(x, y);
@@ -94,7 +78,7 @@
 
                     function onPanelDragEnd(e) {
                         var canvas = getInternalCanvas();
-                        options.dragok = false;
+                        options.canDrag = false;
                         canvas.onmousemove = null;
                         options.preX = 0;
                         options.preY = 0;
@@ -102,7 +86,7 @@
 
                     function onInitialize() {
 
-                        var container = jQuery(optionsNew.selector),
+                        var container = jQuery(options.selector),
                             h = container.height() - 44,
                             w = container.width(),
                             top = '55px';
@@ -120,7 +104,7 @@
                         div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
                         div.width = w;
                         div.height = h;
-                        div.className = 'divpen-canvas';
+                        div.className = options.canvasClassName;
                         div.appendChild(canvas);
                         container.append(div);
                         setTimeout(function () {
