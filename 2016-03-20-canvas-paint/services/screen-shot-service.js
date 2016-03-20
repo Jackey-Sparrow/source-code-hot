@@ -11,7 +11,7 @@
             var hasCanvas = false;
             var defaultOptions = {
                 selector: 'body',
-                id: 'pen_' + randomId,
+                canvasId: 'pen_' + randomId,
                 title: 'Pen',
                 //config
                 canDrag: false,
@@ -22,8 +22,7 @@
                 config: {
                     penStyle: '#ff0000',
                     penWidth: 4
-                },
-                canvasClassName: 'divpen-canvas'
+                }
             };
 
             var compile;
@@ -44,7 +43,7 @@
             }
 
             function destroy() {
-                angular.element('.' + defaultOptions.canvasClassName).remove();
+                angular.element(compile).remove();
             }
 
             return {

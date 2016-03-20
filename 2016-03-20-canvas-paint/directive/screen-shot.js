@@ -20,9 +20,39 @@
                     link: linkFn
                 }
 
-                function linkFn($scope) {
+                function linkFn($scope,element) {
                     var options = screenShotService.getOptions();
                     var canvasAttrs = "background-color:transparent;";
+
+                    function onInitialize() {
+
+                        var container = jQuery(options.selector),
+                            h = container.height() - 44,
+                            w = container.width(),
+                            top = '55px';
+                        var canvas = document.createElement('canvas');
+                        canvas.id = options.canvasId;
+                        canvas.className = 'pen-canvas';
+                        if (platformsDeviceService.statusBar) {
+                            top = '75px';
+                        }
+                        canvas.setAttribute('style', "background-color:transparent;");
+                        canvas.width = w;
+                        canvas.height = h;
+
+                        var div = document.createElement('div');
+                        div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
+                        div.width = w;
+                        div.height = h;
+                        div.appendChild(canvas);
+                        element.append(div);
+                        setTimeout(function () {
+                            canvas.addEventListener("touchstart", onPanelDragStart, false);
+                            canvas.addEventListener("touchend", onPanelDragEnd, false);
+                            canvas.addEventListener("mousedown", onPanelDragStart, false);
+                            canvas.addEventListener("mouseup", onPanelDragEnd, false);
+                        }, 200);
+                    }
 
                     function onPanelDragStart(e) {
                         var canvas = getInternalCanvas(),
@@ -84,39 +114,8 @@
                         options.preY = 0;
                     }
 
-                    function onInitialize() {
-
-                        var container = jQuery(options.selector),
-                            h = container.height() - 44,
-                            w = container.width(),
-                            top = '55px';
-                        var canvas = document.createElement('canvas');
-                        canvas.id = options.id;
-                        canvas.className = 'pen-canvas';
-                        if (platformsDeviceService.statusBar) {
-                            top = '75px';
-                        }
-                        canvas.setAttribute('style', "background-color:transparent;");
-                        canvas.width = w;
-                        canvas.height = h;
-
-                        var div = document.createElement('div');
-                        div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
-                        div.width = w;
-                        div.height = h;
-                        div.className = options.canvasClassName;
-                        div.appendChild(canvas);
-                        container.append(div);
-                        setTimeout(function () {
-                            canvas.addEventListener("touchstart", onPanelDragStart, false);
-                            canvas.addEventListener("touchend", onPanelDragEnd, false);
-                            canvas.addEventListener("mousedown", onPanelDragStart, false);
-                            canvas.addEventListener("mouseup", onPanelDragEnd, false);
-                        }, 200);
-                    }
-
                     function getInternalCanvas() {
-                        var canvas = document.getElementById(options.id);
+                        var canvas = document.getElementById(options.canvasId);
                         return canvas;
                     }
 
