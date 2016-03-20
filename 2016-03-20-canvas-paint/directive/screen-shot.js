@@ -1,5 +1,5 @@
 ﻿var penView = {};
-(function () {
+(function (angular) {
 
     'use strict';
 
@@ -22,7 +22,6 @@
 
                 function linkFn($scope, element) {
                     var options = screenShotService.getOptions();
-                    var canvasAttrs = "background-color:transparent;";
                     var canvas;
 
                     function onInitialize() {
@@ -36,12 +35,7 @@
                         canvas = createCanvas(w, h);
                         canvasBox.appendChild(canvas);
                         element.append(canvasBox);
-                        setTimeout(function () {
-                            canvas.addEventListener("touchstart", onPanelDragStart, false);
-                            canvas.addEventListener("touchend", onPanelDragEnd, false);
-                            canvas.addEventListener("mousedown", onPanelDragStart, false);
-                            canvas.addEventListener("mouseup", onPanelDragEnd, false);
-                        }, 200);
+
                     }
 
                     function createCanvasBox(width, height, top) {
@@ -63,12 +57,18 @@
 
                         canvas.width = width;
                         canvas.height = height;
+
+                        setTimeout(function () {
+                            canvas.addEventListener("touchstart", onPanelDragStart, false);
+                            canvas.addEventListener("touchend", onPanelDragEnd, false);
+                            canvas.addEventListener("mousedown", onPanelDragStart, false);
+                            canvas.addEventListener("mouseup", onPanelDragEnd, false);
+                        }, 200);
                         return canvas;
                     }
 
                     function onPanelDragStart(e) {
-                        var
-                            ctx = canvas.getContext('2d'),
+                        var ctx = canvas.getContext('2d'),
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
 
@@ -85,8 +85,7 @@
                     }
 
                     function onPanelMove(e) {
-                        var
-                            ctx = canvas.getContext('2d'),
+                        var ctx = canvas.getContext('2d'),
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
                         if (options.canDrag) {
@@ -119,21 +118,13 @@
                     }
 
                     function onPanelDragEnd(e) {
-                        //var canvas = getInternalCanvas();
                         options.canDrag = false;
                         canvas.onmousemove = null;
                         options.preX = 0;
                         options.preY = 0;
                     }
 
-                    //function getInternalCanvas() {
-                    //    var canvas = document.getElementById(options.canvasId);
-                    //    return canvas;
-                    //}
-
                     function beginNewDraw(penStyle) {
-
-                        //var canvas = getInternalCanvas();
                         var context = canvas.getContext('2d');
                         penStyle = (penStyle != undefined) ? penStyle : options.config.penStyle;
                         var penWidth = options.config.penWidth;
@@ -142,8 +133,6 @@
                     }
 
                     function Canvaseraser(x, y) {
-                        //var canvas = getInternalCanvas(),
-                        //    ctx = canvas.getContext('2d');
                         var ctx = canvas.getContext('2d');
                         ctx.globalCompositeOperation = 'destination-out';
                         ctx.beginPath();
@@ -154,16 +143,10 @@
                     }
 
                     penView.clearCanvas = function () {
-                        //clear
-                        //var me = penView;
-                        //var canvas = getInternalCanvas();
                         var context = canvas.getContext('2d');
                         context.beginPath();
                         context.clearRect(0, 0, ctx.canvas.offsetWidth, ctx.canvas.offsetHeight);
 
-                    };
-                    penView.seteraserStatus = function (boolvalue) {
-                        options.eraserStatus = boolvalue;
                     };
 
 
@@ -173,6 +156,4 @@
         ])
     ;
 }
-()
-)
-;
+)(angular);

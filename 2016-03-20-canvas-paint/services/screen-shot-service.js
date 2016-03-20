@@ -42,6 +42,10 @@
                 return options ? options : defaultOptions;
             }
 
+            function switchPaintAndEraser(boolVal) {
+                options.eraserStatus = boolVal === void(0) ? !options.eraserStatus : boolVal;
+            }
+
             function destroy() {
                 angular.element(compile).remove();
                 options = void(0);
@@ -51,6 +55,7 @@
             return {
                 getOptions: getOptions,
                 openPaint: openPaint,
+                switchPaintAndEraser: switchPaintAndEraser,
                 destroy: destroy
             };
         }]);
