@@ -1,4 +1,4 @@
-﻿(function (angular,$) {
+﻿(function (angular, $) {
 
     'use strict';
 
@@ -15,7 +15,6 @@
                 return {
                     restrict: 'AE',
                     scope: {},
-                    template: '',
                     link: linkFn
                 };
 
@@ -29,7 +28,7 @@
                         var container = $(options.selector),
                             h = container.height() - 44,
                             w = container.width(),
-                            top = '55px';
+                            top = parseInt(options.marginTop) + 'px';
 
                         var canvasBox = createCanvasBox(w, h, top);
                         canvas = createCanvas(w, h);
@@ -91,7 +90,7 @@
                         if (options.canDrag) {
                             if (options.eraserStatus) {
                                 //橡皮
-                                Canvaseraser(x, y);
+                                canvasEraser(x, y);
                             } else {
                                 ctx.beginPath();
                                 if (options.preX == 0 && options.preY == 0) {
@@ -132,7 +131,7 @@
                         context.lineWidth = penWidth;
                     }
 
-                    function Canvaseraser(x, y) {
+                    function canvasEraser(x, y) {
                         var ctx = canvas.getContext('2d');
                         ctx.globalCompositeOperation = 'destination-out';
                         ctx.beginPath();
@@ -147,5 +146,4 @@
             }
         ])
     ;
-}
-)(angular,$);
+})(angular, $);

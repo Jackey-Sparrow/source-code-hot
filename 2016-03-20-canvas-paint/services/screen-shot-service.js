@@ -12,9 +12,8 @@
             var defaultOptions = {
                     selector: 'body',
                     canvasId: 'pen_' + randomId,
-                    title: 'Pen',
-                    //config
                     canDrag: false,
+                    marginTop: 50,
                     offsetTop: 47,
                     eraserStatus: false,
                     preX: 0,
@@ -42,7 +41,7 @@
                 return options ? options : defaultOptions;
             }
 
-            function switchPaintAndEraser(boolVal) {
+            function switchToPaintOrEraser(boolVal) {
                 options.eraserStatus = boolVal === void(0) ? !options.eraserStatus : boolVal;
             }
 
@@ -55,7 +54,7 @@
             return {
                 getOptions: getOptions,
                 openPaint: openPaint,
-                switchPaintAndEraser: switchPaintAndEraser,
+                switchToPaintOrEraser: switchToPaintOrEraser,
                 destroy: destroy
             };
         }]);
