@@ -20,7 +20,7 @@
                     link: linkFn
                 }
 
-                function linkFn($scope,element) {
+                function linkFn($scope, element) {
                     var options = screenShotService.getOptions();
                     var canvasAttrs = "background-color:transparent;";
 
@@ -41,9 +41,11 @@
                         canvas.height = h;
 
                         var div = document.createElement('div');
-                        div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
+                        //div.setAttribute('style', "overflow:visible;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);background-color:transparent;position: absolute;left: 0;top: " + top + ";z-index:9999");
+                        div.setAttribute('style', 'top:' + top);
                         div.width = w;
                         div.height = h;
+                        div.className = 'screen-shot-canvas-box';
                         div.appendChild(canvas);
                         element.append(div);
                         setTimeout(function () {

@@ -33,7 +33,7 @@
 
             function openPaint($scope) {
                 if (!hasCanvas) {
-                    compile = $compile('<div data-screen-shot id="screen-shot-box"></div>')($scope);
+                    compile = $compile('<div data-screen-shot id="screen-shot"></div>')($scope);
                     angular.element(defaultOptions.selector).append(compile);
                 }
             }
