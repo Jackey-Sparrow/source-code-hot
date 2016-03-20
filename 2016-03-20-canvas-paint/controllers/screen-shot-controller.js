@@ -8,12 +8,6 @@
         ['$scope', 'screenShotService',
             function ($scope, screenShotService) {
                 $scope.openPaint = function () {
-                    //screenShotService.screenShotOptions(
-                    //    {
-                    //        selector: '.paint',
-                    //        test: 'dd'
-                    //    }
-                    //);
                     screenShotService.openPaint($scope, {
                         selector: '.paint',
                         test: 'dd'
