@@ -8,8 +8,8 @@
      */
     var moduleName = 'screenShot';
     angular.module(moduleName).directive('screenShot',
-        ['platformsDeviceService', 'screenShotService',
-            function (platformsDeviceService, screenShotService) {
+        ['screenShotService',
+            function (screenShotService) {
 
                 //still refactor
                 return {
@@ -49,18 +49,14 @@
                         var canvas = document.createElement('canvas');
                         canvas.id = options.canvasId;
                         canvas.className = 'pen-canvas';
-                        if (platformsDeviceService.statusBar) {
-                            top = '75px';
-                        }
-
                         canvas.width = width;
                         canvas.height = height;
 
                         setTimeout(function () {
-                            canvas.addEventListener("touchstart", onPanelDragStart, false);
-                            canvas.addEventListener("touchend", onPanelDragEnd, false);
-                            canvas.addEventListener("mousedown", onPanelDragStart, false);
-                            canvas.addEventListener("mouseup", onPanelDragEnd, false);
+                            canvas.addEventListener('touchstart', onPanelDragStart, false);
+                            canvas.addEventListener('touchend', onPanelDragEnd, false);
+                            canvas.addEventListener('mousedown', onPanelDragStart, false);
+                            canvas.addEventListener('mouseup', onPanelDragEnd, false);
                         }, 200);
                         return canvas;
                     }
@@ -91,7 +87,7 @@
                                 canvasEraser(x, y);
                             } else {
                                 ctx.beginPath();
-                                if (options.preX == 0 && options.preY == 0) {
+                                if (options.preX === 0 && options.preY === 0) {
                                     ctx.moveTo(x, y);
                                     ctx.lineTo(x, y);
                                     ctx.stroke();
@@ -113,7 +109,7 @@
                         }
                     }
 
-                    function onPanelDragEnd(e) {
+                    function onPanelDragEnd() {
                         options.canDrag = false;
                         canvas.onmousemove = null;
                         options.preX = 0;
@@ -122,7 +118,7 @@
 
                     function beginNewDraw(penStyle) {
                         var context = canvas.getContext('2d');
-                        penStyle = (penStyle != undefined) ? penStyle : options.config.penStyle;
+                        penStyle = (penStyle !== undefined) ? penStyle : options.config.penStyle;
                         var penWidth = options.config.penWidth;
                         context.strokeStyle = penStyle;
                         context.lineWidth = penWidth;
