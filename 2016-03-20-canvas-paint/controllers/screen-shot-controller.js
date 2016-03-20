@@ -10,7 +10,7 @@
                 $scope.openPaint = function () {
                     screenShotService.openPaint($scope, {
                         selector: '.paint',
-                        marginTop: 50,
+                        //marginTop: 50,
                         marginBottom: 44
                     });
                 };

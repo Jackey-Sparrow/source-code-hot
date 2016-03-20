@@ -22,8 +22,7 @@
                     var options = screenShotService.getOptions();
                     var canvas;
 
-                    function onInitialize() {
-
+                    function init() {
                         var container = $(options.selector),
                             h = container.height() - options.marginBottom,
                             w = container.width(),
@@ -134,7 +133,7 @@
                         ctx.globalCompositeOperation = 'source-over';
                     }
 
-                    onInitialize();
+                    init();
                 }
             }
         ])

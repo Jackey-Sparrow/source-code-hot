@@ -9,7 +9,6 @@
     <script src="lib/angular.js"></script>
     <script src="lib/angular-ui-router.js"></script>
     <script src="module.js"></script>
-    <script src="directive/platform-device-service.js"></script>
     <script src="services/screen-shot-service.js"></script>
     <script src="directive/screen-shot.js"></script>
     <script src="controllers/screen-shot-controller.js"></script>
@@ -18,7 +17,7 @@
 <button data-ng-click="openPaint()">open paint</button>
 <button data-ng-click="switchPenStatus()">switch PenStatus</button>
 <button data-ng-click="closePaint()">close paint</button>
-<div class="paint" style="width: 400px;height: 500px; "></div>
+<div class="paint" style="width: 400px;height: 500px; border: 1px solid gray;position: relative;overflow: hidden;"></div>
 </body>
 
 </html>
