@@ -20,8 +20,13 @@
                 angular.element(defaultOptions.selector).append(compile);
             }
 
+            function getOptions() {
+                return defaultOptions;
+            }
+
             return {
                 screenShotOptions: screenShotOptions,
+                getOptions: getOptions,
                 openPaint: openPaint
             };
         }]);

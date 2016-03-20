@@ -12,18 +12,17 @@
         ['platformsDeviceService', 'screenShotService',
             function (platformsDeviceService, screenShotService) {
 
-                //still refactory
+                //still refactor
                 return {
 
                     restrict: 'AE',
-                    scope: {
-                        selector: '='
-                    },
+                    scope: {},
                     template: '',
                     link: linkFn
                 }
 
                 function linkFn($scope) {
+                    var optionsNew = screenShotService.getOptions();
                     var canvasAttrs = "background-color:transparent;";
                     var randomId = Math.floor(Math.random() * 1000 + 1).toString();
                     var options = {
@@ -103,7 +102,7 @@
 
                     function onInitialize() {
 
-                        var container = jQuery('.paint'),
+                        var container = jQuery(optionsNew.selector),
                             h = container.height() - 44,
                             w = container.width(),
                             top = '55px';
