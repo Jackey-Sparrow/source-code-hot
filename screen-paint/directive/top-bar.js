@@ -13,12 +13,10 @@
 			function (platformsDeviceService,
 			          $compile) {
 
+				//still refactory
 				return {
 
 					restrict: 'AE',
-
-					replace: false,
-
 					scope: {
 						type: '='
 					},
