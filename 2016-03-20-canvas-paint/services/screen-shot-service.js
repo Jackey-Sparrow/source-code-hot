@@ -5,18 +5,24 @@
     'use strict';
 
     angular.module('screenShot').factory('screenShotService',
-        [function () {
+        ['$compile', function ($compile) {
 
             var defaultOptions = {
                 selector: 'body'
             };
 
             function screenShotOptions(options) {
-                angular.extend(defaultOptions, options);
+                defaultOptions = angular.extend(defaultOptions, options);
+            }
+
+            function openPaint($scope) {
+                var compile = $compile('<div data-screen-shot></div>')($scope);
+                angular.element(defaultOptions.selector).append(compile);
             }
 
             return {
-                screenShotOptions: screenShotOptions
+                screenShotOptions: screenShotOptions,
+                openPaint: openPaint
             };
         }]);
 })(angular);

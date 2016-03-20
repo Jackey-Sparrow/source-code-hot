@@ -5,7 +5,11 @@
     'use strict';
 
     angular.module('screenShot').controller('screenShotController',
-        ['$scope', function ($scope) {
+        ['$scope', 'screenShotService',
+            function ($scope, screenShotService) {
+                $scope.openPaint = function () {
+                    screenShotService.openPaint($scope);
+                };
 
-        }]);
+            }]);
 })(angular);

@@ -8,7 +8,7 @@
      * @description
      */
     var moduleName = 'screenShot';
-    angular.module(moduleName).directive('screenshot',
+    angular.module(moduleName).directive('screenShot',
         ['platformsDeviceService', 'screenShotService',
             function (platformsDeviceService, screenShotService) {
 
