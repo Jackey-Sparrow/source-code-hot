@@ -1,5 +1,4 @@
-﻿var penView = {};
-(function (angular) {
+﻿(function (angular,$) {
 
     'use strict';
 
@@ -26,7 +25,7 @@
 
                     function onInitialize() {
 
-                        var container = jQuery(options.selector),
+                        var container = $(options.selector),
                             h = container.height() - 44,
                             w = container.width(),
                             top = '55px';
@@ -142,18 +141,10 @@
                         ctx.globalCompositeOperation = 'source-over';
                     }
 
-                    penView.clearCanvas = function () {
-                        var context = canvas.getContext('2d');
-                        context.beginPath();
-                        context.clearRect(0, 0, ctx.canvas.offsetWidth, ctx.canvas.offsetHeight);
-
-                    };
-
-
                     onInitialize();
                 }
             }
         ])
     ;
 }
-)(angular);
+)(angular,$);
