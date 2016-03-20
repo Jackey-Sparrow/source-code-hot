@@ -7,15 +7,19 @@
     angular.module('screenShot').factory('screenShotService',
         ['$compile', function ($compile) {
 
-            var randomId = Math.floor(Math.random() * 1000 + 1).toString();
+            var penStatus = {
+                paint: 'paint',
+                eraser: 'eraser'
+            };
             var hasCanvas = false;
             var defaultOptions = {
                     selector: 'body',
-                    canvasId: 'pen_' + randomId,
+                    canvasId: 'pen_canvas',
                     canDrag: false,
-                    marginTop: 50,
+                    marginTop: 0,
+                    marginBottom: 0,
                     offsetTop: 47,
-                    eraserStatus: false,
+                    penStatus: penStatus.paint,//or 'eraser'
                     preX: 0,
                     preY: 0,
                     config: {
@@ -41,8 +45,9 @@
                 return options ? options : defaultOptions;
             }
 
-            function switchToPaintOrEraser(boolVal) {
-                options.eraserStatus = boolVal === void(0) ? !options.eraserStatus : boolVal;
+            function switchPenStatus(status) {
+                var oppositeStatus = options.penStatus === penStatus.paint ? penStatus.eraser : penStatus.paint;
+                options.penStatus = status === void(0) ? oppositeStatus : status;
             }
 
             function destroy() {
@@ -54,7 +59,7 @@
             return {
                 getOptions: getOptions,
                 openPaint: openPaint,
-                switchToPaintOrEraser: switchToPaintOrEraser,
+                switchPenStatus: switchPenStatus,
                 destroy: destroy
             };
         }]);

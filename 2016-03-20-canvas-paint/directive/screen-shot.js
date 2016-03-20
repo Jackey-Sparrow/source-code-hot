@@ -24,9 +24,8 @@
 
                     function onInitialize() {
 
-                        //todo
                         var container = $(options.selector),
-                            h = container.height() - 44,
+                            h = container.height() - options.marginBottom,
                             w = container.width(),
                             top = parseInt(options.marginTop) + 'px';
 
@@ -71,7 +70,6 @@
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
 
-                        //设置笔颜色和大小
                         options.preX = x;
                         options.preY = y;
                         beginNewDraw();
@@ -88,8 +86,8 @@
                             x = e.pageX + canvas.offsetLeft,
                             y = e.pageY + canvas.offsetTop - options.offsetTop;
                         if (options.canDrag) {
-                            if (options.eraserStatus) {
-                                //橡皮
+                            if (options.penStatus === 'eraser') {
+                                //use eraser
                                 canvasEraser(x, y);
                             } else {
                                 ctx.beginPath();
@@ -112,7 +110,6 @@
 
                                 }
                             }
-
                         }
                     }
 

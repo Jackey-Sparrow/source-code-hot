@@ -10,12 +10,17 @@
                 $scope.openPaint = function () {
                     screenShotService.openPaint($scope, {
                         selector: '.paint',
-                        test: 'dd'
+                        marginTop: 50,
+                        marginBottom: 44
                     });
                 };
 
                 $scope.closePaint = function () {
                     screenShotService.destroy();
+                };
+
+                $scope.switchPenStatus = function () {
+                    screenShotService.switchPenStatus();
                 };
 
             }]);
