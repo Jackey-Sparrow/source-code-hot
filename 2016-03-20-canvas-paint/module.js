@@ -4,5 +4,5 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('screenShot', ['ui.router']);
+	angular.module('screenShot', []);
 })(angular);
