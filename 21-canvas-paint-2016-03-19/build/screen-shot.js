@@ -7,6 +7,17 @@
 
 	angular.module('screenShot', []);
 
+	/**
+	 * screenShotService
+	 *
+	 * @example
+	 *
+	 * screenShotService.openPaint();
+	 * screenShotService.switchPenStatus();
+	 * screenShotService.destroy();
+	 *
+	 * @example
+	 */
 	angular.module('screenShot').factory('screenShotService',
 		['$compile', function ($compile) {
 
