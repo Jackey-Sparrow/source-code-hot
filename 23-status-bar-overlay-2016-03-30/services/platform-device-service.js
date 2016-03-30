@@ -13,11 +13,12 @@
         device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
 
         // Check for status bar and fullscreen app mode
-        var windowWidth = $(window).width();
+        var windowWidth = $(window).width();//todo: use angular if it can
         var windowHeight = $(window).height();
         device.statusBar = false;
         device.statusBar = device.webView && (windowWidth * windowHeight === screen.width * screen.height) ? true : false;
 
+        //todo:
         return device;
     }
 })(angular, $);
