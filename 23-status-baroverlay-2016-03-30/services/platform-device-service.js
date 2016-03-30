@@ -93,6 +93,7 @@
 					classNames.push('ios-gt-' + i);
 				}
 			}
+
 		}
 		// Status bar classes
 		//if (device.statusBar) {
