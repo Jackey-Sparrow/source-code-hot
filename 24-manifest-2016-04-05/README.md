@@ -1,9 +1,7 @@
-## <html manifest="demo.appcache">
-
 ## CACHE MANIFEST
 ###### 在此标题下列出的文件将在首次下载后进行缓存
 ~~~
-
+<html manifest="demo.appcache">
 ~~~
 ## # VERSION
 ~~~
