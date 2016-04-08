@@ -1,4 +1,4 @@
-### INSTALL CORDOVA
+### install cordova
 ~~~
 cordova plugin add cordova-plugin-network-information
 
