@@ -30,7 +30,6 @@
 						element = $compile(template)($rootScope);
 						angular.element('body').append(element);
 
-						netWorkWatch();
 					}
 
 					function netWorkWatch() {
@@ -57,7 +56,12 @@
 						element.css('display', 'none');
 					}
 
-					appendNetWorkTips();
+					function init() {
+						appendNetWorkTips();
+						netWorkWatch();
+					}
+
+					init();
 
 					return {
 						showNetWorkTips: showNetWorkTips,
