@@ -1,0 +1,20 @@
+body.with-statusbar-overlay {
+    padding-top: 20px;
+}
+
+body.with-statusbar-overlay .statusbar-overlay {
+    display: block;
+}
+
+.statusbar-overlay {
+    background: #F0EFF5;
+    z-index: 10000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 100%;
+    display: none;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+}
