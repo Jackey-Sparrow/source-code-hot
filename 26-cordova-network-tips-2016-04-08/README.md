@@ -1,6 +1,8 @@
 ### INSTALL CORDOVA
 ~~~
 cordova plugin add cordova-plugin-network-information
+
+add ngCordova to you index.html
 ~~~
 
 ### usage
