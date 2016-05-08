@@ -5,12 +5,14 @@
 
     if (typeof module === 'object' && typeof module.exports === 'object') {
         //var jQuery = require("jquery")(window);
-        module.exports = glbal.document ? factory(global, true) : function (w) {
-            if (!w.document) {
-                throw new Error('');
-            }
-            return factory(w);
-        };
+        module.exports = global.document ?
+            factory(global, true) :
+            function (w) {
+                if (!w.document) {
+                    throw new Error('jQuery requires a window with a document');
+                }
+                return factory(w);
+            };
     } else {
         factory(global);
     }
