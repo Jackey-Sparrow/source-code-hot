@@ -35,5 +35,21 @@
         var trim = ''.trim;
 
         var support = {};
+
+        //==== begin ===
+
+        var document = window.document,
+            version = '2.1.0',
+
+            jQuery = function (selector, context) {
+                return new jQuery.fn.init(selector, context);
+            },
+
+            rmsPrefix = /^-ms-/,
+            rdashAlpha = /-([\da-z])/gi,
+
+            fcamelCase = function (all, letter) {
+                return letter.toUpperCase();
+            };
     }
 );
