@@ -14,11 +14,26 @@
                 return factory(w);
             };
     } else {
+        //normal call fn
         factory(global);
     }
 
 
 })(typeof window !== 'undefined' ? window : this, function (window, noGlobal) {
+        var arr = [];
+        //get Array fn
+        var slice = arr.slice,
+            concat = arr.concat,
+            push = arr.push,
+            indexOf = arr.indexOf;
 
+        var class2type = {};
+
+        var toString = class2type.toString,//for type teller
+            hasOwn = class2type.hasOwnProperty;//just get object's hasOwnProperty fn
+
+        var trim = ''.trim;
+
+        var support = {};
     }
 );
