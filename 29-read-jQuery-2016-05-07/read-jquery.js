@@ -51,5 +51,15 @@
             fcamelCase = function (all, letter) {
                 return letter.toUpperCase();
             };
+
+        jQuery.fn = jQuery.prototype = {
+            jquery: version,
+            constructor: jQuery,
+            selector: '',
+            length: 0,
+            toArray: function () {
+                return slice.call(arguments);//convert arguments to array
+            }
+        };
     }
 );
