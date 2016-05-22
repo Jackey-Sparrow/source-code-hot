@@ -69,3 +69,15 @@ var Events = function () {
 
 	}
 };
+
+var adultTv = Event();
+
+adultTv.listen('play', function (data) {
+
+	alert("今天是谁的电影" + data.name);
+
+});
+
+//发布者
+
+adultTv.trigger('play', {'name': '麻生希'});
